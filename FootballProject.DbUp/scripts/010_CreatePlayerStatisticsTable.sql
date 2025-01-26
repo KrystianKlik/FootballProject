@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS PlayerStatistics (
+    PlayerStatisticID SERIAL PRIMARY KEY,
+    PlayerID INTEGER REFERENCES Players(PlayerID) ON DELETE CASCADE,
+    SeasonID INTEGER REFERENCES Seasons(SeasonID) ON DELETE CASCADE,
+    Goals INTEGER DEFAULT 0,
+    Assists INTEGER DEFAULT 0,
+    MinutesPlayed INTEGER DEFAULT 0,
+    YellowCards INTEGER DEFAULT 0,
+    RedCards INTEGER DEFAULT 0
+    );

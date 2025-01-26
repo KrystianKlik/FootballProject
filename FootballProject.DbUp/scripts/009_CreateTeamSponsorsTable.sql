@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS TeamSponsors (
+    TeamSponsorID SERIAL PRIMARY KEY,
+    TeamID INTEGER REFERENCES Teams(TeamID) ON DELETE CASCADE,
+    SponsorID INTEGER REFERENCES Sponsors(SponsorID) ON DELETE CASCADE,
+    SponsorshipDetails VARCHAR(255)
+    );
