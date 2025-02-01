@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Reflection;
 using DbUp;
+using DbUp.Oracle;
 
 namespace FootballProject.DbUp
 {
@@ -7,16 +9,15 @@ namespace FootballProject.DbUp
     {
         static int Main(string[] args)
         {
-            // Create the connection string
+
             string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") 
-                                      ?? "Host=localhost;Port=5432;Database=Ekstraklasa;Username=Adrian;Password=SuperSecretPassword;";
+                                      ?? "User Id=ADRIAN;Password=SuperSecretPassword;Data Source=localhost:1521/XEPDB1";
 
-            // Ensure the target database exists
-            EnsureDatabase.For.PostgresqlDatabase(connectionString);
 
+            
             // Configure the upgrader
             var upgrader = DeployChanges.To
-                .PostgresqlDatabase(connectionString)
+                .OracleDatabaseWithDefaultDelimiter(connectionString)  // instead of OracleDatabaseWithSemicolonDelimiter
                 .WithScriptsFromFileSystem("/app/scripts")
                 .LogToConsole()
                 .Build();

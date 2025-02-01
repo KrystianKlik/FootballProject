@@ -5,6 +5,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E81C5451-96AF-4527-A166-70F2A68BC9D1}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
+		init.sql = init.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballProject.DbUp", "FootballProject.DbUp\FootballProject.DbUp.csproj", "{9F8A24AD-01BE-4E99-AB3F-C8A35F2938DE}"

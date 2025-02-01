@@ -8,13 +8,24 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.1.35" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1"/>
+        <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.7.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+        <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.1" />
+        <PackageReference Include="System.Security.Permissions" Version="9.0.1" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Data.SqlClient">
+        <HintPath>..\..\..\.nuget\packages\microsoft.data.sqlclient\5.1.4\ref\net6.0\Microsoft.Data.SqlClient.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

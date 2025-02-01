@@ -1,10 +1,12 @@
--- Insert Seasons
-INSERT INTO seasons (startdate, enddate) VALUES
-('2020-08-01', '2021-05-31'), -- 2020/2021 Season
-('2021-08-01', '2022-05-31'), -- 2021/2022 Season
-('2022-08-01', '2023-05-31'), -- 2022/2023 Season
-('2023-08-01', '2024-05-31'), -- 2023/2024 Season
-('2024-08-01', '2025-05-31'), -- 2024/2025 Season
-('2025-08-01', '2026-05-31'), -- 2025/2026 Season
-('2026-08-01', '2027-05-31'), -- 2026/2027 Season
-('2027-08-01', '2028-05-31'); -- 2027/2028 Season
+INSERT INTO seasons (startdate, enddate)
+SELECT startdate, enddate
+FROM (
+         SELECT DATE '2020-08-01' AS startdate, DATE '2021-05-31' AS enddate FROM dual UNION ALL
+         SELECT DATE '2021-08-01', DATE '2022-05-31' FROM dual UNION ALL
+         SELECT DATE '2022-08-01', DATE '2023-05-31' FROM dual UNION ALL
+         SELECT DATE '2023-08-01', DATE '2024-05-31' FROM dual UNION ALL
+         SELECT DATE '2024-08-01', DATE '2025-05-31' FROM dual UNION ALL
+         SELECT DATE '2025-08-01', DATE '2026-05-31' FROM dual UNION ALL
+         SELECT DATE '2026-08-01', DATE '2027-05-31' FROM dual UNION ALL
+         SELECT DATE '2027-08-01', DATE '2028-05-31' FROM dual
+     )

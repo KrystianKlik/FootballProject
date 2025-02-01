@@ -1,30 +1,33 @@
-version: '3.8'
-
 services:
-  db:
-    image: postgres:17-alpine
-    container_name: postgres-db
+  oracledb:
+    image: gvenzl/oracle-xe:latest
+    container_name: oracle-db
     environment:
-      POSTGRES_USER: Adrian
-      POSTGRES_PASSWORD: SuperSecretPassword
-      POSTGRES_DB: Ekstraklasa
+      ORACLE_PASSWORD: SuperSecretPassword
+      ORACLE_USER: ADRIAN
+      APP_USER: ADRIAN
+      APP_USER_PASSWORD: SuperSecretPassword
     ports:
-      - "5432:5432"
+      - "1521:1521"
+    volumes:
+      - ./init.sql:/container-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U Adrian -d Ekstraklasa"]
+      test: [ "CMD-SHELL", "echo 'SELECT 1 FROM dual;' | sqlplus -s ADRIAN/SuperSecretPassword@//localhost:1521/XEPDB1" ]
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: always
 
   migrator:
     build:
       context: ./FootballProject.DbUp
       dockerfile: Dockerfile
     depends_on:
-      db:
+      oracledb:
         condition: service_healthy
     environment:
-      - CONNECTION_STRING=Host=db;Port=5432;Database=Ekstraklasa;Username=Adrian;Password=SuperSecretPassword
+      CONNECTION_STRING: "User Id=ADRIAN;Password=SuperSecretPassword;Data Source=//oracledb:1521/XEPDB1"
+
     volumes:
       - ./FootballProject.DbUp/Migrations:/app/Migrations
     entrypoint: ["dotnet", "FootballProject.DbUp.dll"]
@@ -35,30 +38,14 @@ services:
       context: ./FootballProject
       dockerfile: Dockerfile
     depends_on:
-      db:
+      oracledb:
         condition: service_healthy
       migrator:
         condition: service_started  # Note: Docker Compose v3 doesn't support `service_completed_successfully`
     environment:
-      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=your_database;Username=your_username;Password=your_password
+      - ConnectionStrings__DefaultConnection=User Id=ADRIAN;Password=SuperSecretPassword;Data Source=//oracledb:1521/XEPDB1
     ports:
       - "8080:8080"
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: adrian@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-    ports:
-      - "5050:80"
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-      - ./servers.json:/pgadmin4/servers.json
-    depends_on:
-      db:
-        condition: service_healthy
-
 volumes:
-  pgadmin-data:
-
+  oracle-data:

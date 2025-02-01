@@ -1,65 +1,67 @@
--- Insert Team Sponsors
-INSERT INTO teamsponsors (teamid, sponsorid, sponsorshipdetails) VALUES
--- Legia Warszawa Sponsors
-(1, 1, 'Orlen - Main shirt sponsor'),
-(1, 5, 'Comarch - IT solutions sponsor'),
+INSERT INTO teamsponsors (teamid, sponsorid, sponsorshipdetails)
+SELECT teamid, sponsorid, sponsorshipdetails
+FROM (
+         -- Legia Warszawa Sponsors
+         SELECT 1 AS teamid, 1 AS sponsorid, 'Orlen - Main shirt sponsor' AS sponsorshipdetails FROM dual UNION ALL
+         SELECT 1, 5, 'Comarch - IT solutions sponsor' FROM dual UNION ALL
 
--- Lech Poznań Sponsors
-(2, 3, 'STS Bet - Shirt and stadium branding sponsor'),
-(2, 10, 'Eko-Okna - Regional sponsor'),
+         -- Lech Poznań Sponsors
+         SELECT 2, 3, 'STS Bet - Shirt and stadium branding sponsor' FROM dual UNION ALL
+         SELECT 2, 10, 'Eko-Okna - Regional sponsor' FROM dual UNION ALL
 
--- Raków Częstochowa Sponsors
-(3, 6, 'X-Kom - Digital branding sponsor'),
-(3, 4, 'KGHM Polska Miedź - Main sponsor with stadium branding'),
+         -- Raków Częstochowa Sponsors
+         SELECT 3, 6, 'X-Kom - Digital branding sponsor' FROM dual UNION ALL
+         SELECT 3, 4, 'KGHM Polska Miedź - Main sponsor with stadium branding' FROM dual UNION ALL
 
--- Pogoń Szczecin Sponsors
-(4, 7, 'Grupa Azoty - Local chemical industry partner'),
-(4, 11, 'Radomskie Centrum Onkologii - Healthcare sponsor'),
+         -- Pogoń Szczecin Sponsors
+         SELECT 4, 7, 'Grupa Azoty - Local chemical industry partner' FROM dual UNION ALL
+         SELECT 4, 11, 'Radomskie Centrum Onkologii - Healthcare sponsor' FROM dual UNION ALL
 
--- Lechia Gdańsk Sponsors
-(5, 2, 'Lotos - Main sponsor and stadium naming rights'),
-(5, 9, 'Suzuki - Automotive partner'),
+         -- Lechia Gdańsk Sponsors
+         SELECT 5, 2, 'Lotos - Main sponsor and stadium naming rights' FROM dual UNION ALL
+         SELECT 5, 9, 'Suzuki - Automotive partner' FROM dual UNION ALL
 
--- Śląsk Wrocław Sponsors
-(6, 4, 'KGHM Polska Miedź - Main sponsor with community outreach'),
-(6, 13, 'Green Point - Sustainability initiative sponsor'),
+         -- Śląsk Wrocław Sponsors
+         SELECT 6, 4, 'KGHM Polska Miedź - Main sponsor with community outreach' FROM dual UNION ALL
+         SELECT 6, 13, 'Green Point - Sustainability initiative sponsor' FROM dual UNION ALL
 
--- Cracovia Sponsors
-(7, 5, 'Comarch - Technology sponsor'),
-(7, 8, 'Totalbet - Betting partner'),
+         -- Cracovia Sponsors
+         SELECT 7, 5, 'Comarch - Technology sponsor' FROM dual UNION ALL
+         SELECT 7, 8, 'Totalbet - Betting partner' FROM dual UNION ALL
 
--- Górnik Zabrze Sponsors
-(8, 4, 'KGHM Polska Miedź - Community sponsorship agreement'),
-(8, 14, 'Polsat Plus - Broadcast sponsor'),
+         -- Górnik Zabrze Sponsors
+         SELECT 8, 4, 'KGHM Polska Miedź - Community sponsorship agreement' FROM dual UNION ALL
+         SELECT 8, 14, 'Polsat Plus - Broadcast sponsor' FROM dual UNION ALL
 
--- Wisła Płock Sponsors
-(9, 1, 'Orlen - Long-term energy partnership'),
-(9, 10, 'Eko-Okna - Window manufacturing sponsor'),
+         -- Wisła Płock Sponsors
+         SELECT 9, 1, 'Orlen - Long-term energy partnership' FROM dual UNION ALL
+         SELECT 9, 10, 'Eko-Okna - Window manufacturing sponsor' FROM dual UNION ALL
 
--- Jagiellonia Białystok Sponsors
-(10, 3, 'STS Bet - Shirt sponsor and digital branding'),
-(10, 11, 'Radomskie Centrum Onkologii - Healthcare initiative partner'),
+         -- Jagiellonia Białystok Sponsors
+         SELECT 10, 3, 'STS Bet - Shirt sponsor and digital branding' FROM dual UNION ALL
+         SELECT 10, 11, 'Radomskie Centrum Onkologii - Healthcare initiative partner' FROM dual UNION ALL
 
--- Piast Gliwice Sponsors
-(11, 9, 'Suzuki - Transportation and eco-friendly vehicle sponsor'),
-(11, 15, 'DHL - Logistics partnership for events'),
+         -- Piast Gliwice Sponsors
+         SELECT 11, 9, 'Suzuki - Transportation and eco-friendly vehicle sponsor' FROM dual UNION ALL
+         SELECT 11, 15, 'DHL - Logistics partnership for events' FROM dual UNION ALL
 
--- Zagłębie Lubin Sponsors
-(12, 4, 'KGHM Polska Miedź - Long-term main sponsor'),
-(12, 8, 'Totalbet - Betting partner for local promotions'),
+         -- Zagłębie Lubin Sponsors
+         SELECT 12, 4, 'KGHM Polska Miedź - Long-term main sponsor' FROM dual UNION ALL
+         SELECT 12, 8, 'Totalbet - Betting partner for local promotions' FROM dual UNION ALL
 
--- Radomiak Radom Sponsors
-(13, 11, 'Radomskie Centrum Onkologii - Local healthcare sponsorship'),
-(13, 13, 'Green Point - Sustainability partner with local initiatives'),
+         -- Radomiak Radom Sponsors
+         SELECT 13, 11, 'Radomskie Centrum Onkologii - Local healthcare sponsorship' FROM dual UNION ALL
+         SELECT 13, 13, 'Green Point - Sustainability partner with local initiatives' FROM dual UNION ALL
 
--- Warta Poznań Sponsors
-(14, 10, 'Eko-Okna - Regional branding partner'),
-(14, 15, 'DHL - Transportation partnership for logistics'),
+         -- Warta Poznań Sponsors
+         SELECT 14, 10, 'Eko-Okna - Regional branding partner' FROM dual UNION ALL
+         SELECT 14, 15, 'DHL - Transportation partnership for logistics' FROM dual UNION ALL
 
--- Korona Kielce Sponsors
-(15, 8, 'Totalbet - Shirt branding sponsor'),
-(15, 7, 'Grupa Azoty - Regional partnership'),
+         -- Korona Kielce Sponsors
+         SELECT 15, 8, 'Totalbet - Shirt branding sponsor' FROM dual UNION ALL
+         SELECT 15, 7, 'Grupa Azoty - Regional partnership' FROM dual UNION ALL
 
--- Miedź Legnica Sponsors
-(16, 12, 'Legnickie Przedsiębiorstwo Wodociągów - Local water supply sponsor'),
-(16, 9, 'Suzuki - Automotive sponsor and regional branding');
+         -- Miedź Legnica Sponsors
+         SELECT 16, 12, 'Legnickie Przedsiębiorstwo Wodociągów - Local water supply sponsor' FROM dual UNION ALL
+         SELECT 16, 9, 'Suzuki - Automotive sponsor and regional branding' FROM dual
+     )
