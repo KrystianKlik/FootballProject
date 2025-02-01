@@ -552,7 +552,7 @@ app.MapGet("/playerstatistics", async () =>
     return Results.Ok(stats);
 });
 
-app.MapPost("/players", async (PlayerCreate player) =>
+app.MapPost("/player", async (PlayerCreate player) =>
 {
     try
     {
@@ -594,7 +594,7 @@ app.MapPost("/players", async (PlayerCreate player) =>
     }
 });
 
-app.MapPut("/players/{id:int}", async (int id, UpdatePlayerRequest req) =>
+app.MapPut("/player/{id:int}", async (int id, UpdatePlayerRequest req) =>
 {
     // Ensure the route id matches the request body id.
     if (id != req.PlayerID)
@@ -632,7 +632,7 @@ app.MapPut("/players/{id:int}", async (int id, UpdatePlayerRequest req) =>
     }
 });
 
-app.MapDelete("/players/{id:int}", async (int id) =>
+app.MapDelete("/player/{id:int}", async (int id) =>
 {
     try
     {
@@ -655,7 +655,7 @@ app.MapDelete("/players/{id:int}", async (int id) =>
     }
 });
 
-app.MapGet("/players/{id}", async (decimal id) =>
+app.MapGet("/player/{id}", async (decimal id) =>
 {
     Player? player = null;
 
